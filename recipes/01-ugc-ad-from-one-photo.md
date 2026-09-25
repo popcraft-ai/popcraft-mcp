@@ -80,7 +80,7 @@ popcraft_generate_video {
 
 <img src="https://cdn.popcraft.ai/mcp-uploads/69981e960cde3209e9fb0e37/c187d112-5b5a-4a95-8ea9-ee1b25a2204d/recipe01-ad.gif" width="270" alt="The finished ad, preview">
 
-[▶ Watch the ad — MP4, 720×1280, 15 s, with sound](https://cdn.popcraft.ai/videogen/b055dac7-7249-464f-93db-ce10deef69e2/vertical-9-16-ugc-creator-video.mp4) · rendered in about 6 minutes
+[▶ Watch the ad — MP4, 720×1280, 15 s, with sound](https://cdn.popcraft.ai/videogen/b055dac7-7249-464f-93db-ce10deef69e2/vertical-9-16-ugc-creator-video.mp4) 
 
 **8. Frozen-frame QA** — the agent pulls frames from the result and checks the product, the hands and any text. This run: the same courier in every frame, the bottle's shape and finish unchanged, the wordmark reads "Popcraft" at 1 s, 12 s and 14 s, all four beats land inside their windows, no captions or music appeared. One nit a client cut would fix with a re-roll: a faint garment-brand mark on the windbreaker's chest.
 
