@@ -1,20 +1,10 @@
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://cdn.popcraft.ai/mcp-uploads/69981e960cde3209e9fb0e37/d3b14427-9435-4951-93b4-95cc7ddeea2c/readme-wordmark-dark.png">
-    <img src="https://cdn.popcraft.ai/mcp-uploads/69981e960cde3209e9fb0e37/eb4bf442-c22d-4485-b061-1973848ab40f/readme-wordmark-light.png" alt="Popcraft" width="220">
-  </picture>
-</p>
-
-<h1 align="center">Popcraft MCP</h1>
-
-<p align="center">
-  Generate video, images, music and sound effects from any AI agent —<br>
-  one MCP endpoint, 20+ frontier models, no API key.
+  <a href="https://popcraft.ai/mcp"><img src="https://cdn.popcraft.ai/mcp-uploads/69981e960cde3209e9fb0e37/8bfb213e-f975-408f-9ebd-9b10418e1591/readme-hero.png" alt="Popcraft MCP — generate video, images, music and sound effects from any AI agent. One endpoint, 20+ frontier models, no API key. https://popcraft.ai/api/mcp" width="100%"></a>
 </p>
 
 <p align="center">
   <img alt="MCP · Streamable HTTP" src="https://img.shields.io/badge/MCP-Streamable%20HTTP-FF6B42">
-  <img alt="Auth · OAuth 2.1" src="https://img.shields.io/badge/Auth-OAuth%202.1%2C%20no%20API%20key-1f2328">
+  <img alt="Auth · OAuth 2.1" src="https://img.shields.io/badge/Auth-OAuth%202.1%2C%20no%20API%20key-3A3430">
   <img alt="Models · 20+" src="https://img.shields.io/badge/Models-Seedance%20%C2%B7%20Veo%20%C2%B7%20Kling%20%C2%B7%20Nano%20Banana%20%C2%B7%20GPT%20Image-FF9D3D">
   <img alt="License · MIT" src="https://img.shields.io/badge/License-MIT-green">
 </p>
