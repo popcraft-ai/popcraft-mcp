@@ -126,7 +126,7 @@ Each recipe is a complete run — the tool calls, the prompts and the outputs, s
 
 | # | Recipe | What you get |
 |---|---|---|
-| 01 | [UGC ad from one product photo](recipes/01-ugc-ad-from-one-photo.md) | The `ugc-ad` skill end to end: intake → identity → storyboard → one Seedance 2.0 clip with native speech |
+| 01 | [UGC ad from one product photo](recipes/01-ugc-ad-from-one-photo.md) | The `ugc-ad` skill end to end, one real run: locked creator → script → storyboard → first frame → a 15 s Seedance 2.0 clip with native speech |
 | 02 | [Thumbnail with identity lock](recipes/02-thumbnail-with-identity-lock.md) | `thumbnail-pro` with your own face held constant across variants |
 | 03 | [Seedance 2.5 single take](recipes/03-seedance-2-5-single-take.md) | Timestamped shot list, 480p draft, then `popcraft_upgrade_video` to 1080p |
 | 04 | [Product image set with an exact wordmark](recipes/04-product-image-set.md) | Packshot → lifestyle → background swap → poster → product loop, with the brand's exact wordmark |
