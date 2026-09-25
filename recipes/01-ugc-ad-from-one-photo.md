@@ -8,9 +8,8 @@ One vertical 9:16 creator-style ad, up to 15 seconds, with the speech and sound 
 
 <table>
   <tr>
-    <td align="center"><img src="https://cdn.popcraft.ai/mcp-uploads/69981e960cde3209e9fb0e37/f8dba7f7-cff0-4437-8203-3b0c0387870b/recipe04-packshot.jpg" width="200" alt="Product intake"><br><sub>1 · Product intake</sub></td>
-    <td align="center"><img src="https://cdn.popcraft.ai/mcp-uploads/69981e960cde3209e9fb0e37/7e5a9aca-fb52-4b3c-be37-28b7949abf36/recipe02-portrait.jpg" width="200" alt="Creator identity"><br><sub>2 · Creator identity</sub></td>
-    <td align="center"><img src="https://cdn.popcraft.ai/mcp-uploads/69981e960cde3209e9fb0e37/f6783e88-8372-4cc7-91da-09f302879e6e/recipe01-tokyo.gif" width="200" alt="Vertical clip with native sound"><br><sub>7 · One vertical clip, native sound</sub></td>
+    <td align="center"><img src="https://cdn.popcraft.ai/mcp-uploads/69981e960cde3209e9fb0e37/f8dba7f7-cff0-4437-8203-3b0c0387870b/recipe04-packshot.jpg" width="220" alt="The product photo"><br><sub>In: the product photo</sub></td>
+    <td align="center"><img src="https://cdn.popcraft.ai/mcp-uploads/69981e960cde3209e9fb0e37/7e5a9aca-fb52-4b3c-be37-28b7949abf36/recipe02-portrait.jpg" width="220" alt="The locked creator"><br><sub>Locked: the creator who will present it</sub></td>
   </tr>
 </table>
 
@@ -44,13 +43,7 @@ Your own face photo works the same way — attach it and the identity lock appli
 
 **6. Cost preview** — `popcraft_generate_video { model: "seedance-2-0", aspect_ratio: "9:16", duration: 15, resolution: "720p", get_cost: true, medias: [...] }`. The agent shows you the exact number before anything is spent (Seedance 2.0 bills per second of output; Pro and Max also include a daily Seedance 2.0 Fast & Mini allowance at no credit cost) and waits for a yes.
 
-**7. One Seedance 2.0 generation** — references bound in the prompt as `Image 1` (creator) / `Image 2` (product) / `Image 3` (storyboard), speech and ambient sound rendered natively in the clip: no separate TTS, no mixing. What a single vertical Seedance 2.0 take looks like — one continuous handheld shot, natural street sound, the turn-to-camera landing at about 1.2 s:
-
-<img src="https://cdn.popcraft.ai/mcp-uploads/69981e960cde3209e9fb0e37/f6783e88-8372-4cc7-91da-09f302879e6e/recipe01-tokyo.gif" width="270" alt="Vertical Seedance 2.0 Fast clip">
-
-[▶ MP4, 720p with audio](https://cdn.popcraft.ai/videogen/d2a0eae0-f22a-441c-998c-ba3b0ed1b12f/handheld-phone-camera-shot-a-woman.mp4) · Seedance 2.0 Fast, 9:16, 5 s ·
-
-> Handheld phone-camera shot, a woman in a yellow raincoat crossing a rain-soaked Tokyo street at night, neon signs reflected in the puddles, she turns toward the camera and laughs, one continuous take, natural street sound, no subtitles, no background music.
+**7. One Seedance 2.0 generation** — references bound in the prompt as `Image 1` (creator) / `Image 2` (product) / `Image 3` (storyboard), speech and ambient sound rendered natively in the clip: no separate TTS, no mixing. The creator locked in step 2 is the person on camera; the product from step 1 is in her hand.
 
 **8. Frozen-frame QA** — the agent pulls frames from the result, checks the product, the hands and the on-screen text, and either passes it or re-rolls the one beat that failed.
 
@@ -62,4 +55,4 @@ Your own face photo works the same way — attach it and the identity lock appli
 
 ## Run it
 
-Steps 1, 2 and 7 above show real outputs from this account. The finished ad is yours to make — paste the prompt at the top of this page into any connected client with your product photo and say yes to the cost preview.
+The product photo and the locked creator above are real outputs from this account; the finished ad for this product has not been rendered yet. Paste the prompt at the top of this page into any connected client with your own product photo and say yes to the cost preview — the agent does the rest.
