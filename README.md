@@ -72,12 +72,12 @@ Paste any of these into a fresh chat once the connector is on:
 
 | Group | Tools | What they do |
 |---|---|---|
-| **Create** | `popcraft_generate_video` · `popcraft_generate_image` · `popcraft_generate_audio` · `popcraft_generate_3d` · `popcraft_effects_show` · `popcraft_list_voices` | Text-to-video, image-to-video, first/last frame, reference- and audio-driven video · every frontier image model, edits with references · TTS, sound effects, music · 3D · curated effects · playable voice samples |
-| **Enhance** | `popcraft_upscale_image` · `popcraft_upscale_video` · `popcraft_upgrade_video` · `popcraft_postprocess_3d` | Topaz 2×/4× (nine modes) · 2×/4× with fps control · re-render a Seedance 2.5 draft at 1080p |
-| **Media & references** | `popcraft_media_upload` · `popcraft_media_import_url` · `popcraft_media_upload_widget` · `popcraft_media_upload_inline` · `popcraft_media_confirm` · `popcraft_show_medias` · `popcraft_show_elements` | Signed direct upload (shell recipes, so a 200 MB reference streams from disk instead of through the context window) · any public URL → reference · your media library · reusable characters and styles |
-| **Jobs & catalog** | `popcraft_models_explore` · `popcraft_job_display` · `popcraft_show_generations` · `popcraft_projects` | Capabilities, reference limits, aspect ratios, durations and credit costs per model · result cards that refresh themselves (no polling loops) · revisit and chain past results |
-| **Skills** | `popcraft_get_workflow_instructions` · `popcraft_get_workflow_bundle_file` | Production playbooks served live from the server — see below |
-| **Account** | `popcraft_balance` · `popcraft_show_plans_and_credits` · `popcraft_transactions` | Credits and plan before spending · top-up · every charge and refund |
+| **Create** | `popcraft_generate_video`<br>`popcraft_generate_image`<br>`popcraft_generate_audio`<br>`popcraft_generate_3d`<br>`popcraft_effects_show`<br>`popcraft_list_voices` | Text-to-video, image-to-video, first/last frame, reference- and audio-driven video<br>Every frontier image model, edits with references<br>TTS, sound effects, music<br>3D generation<br>Curated video effects<br>Playable voice samples |
+| **Enhance** | `popcraft_upscale_image`<br>`popcraft_upscale_video`<br>`popcraft_upgrade_video`<br>`popcraft_postprocess_3d` | Topaz 2×/4×, nine modes<br>2×/4× with fps control<br>Re-render a Seedance 2.5 draft at 1080p<br>3D post-processing |
+| **Media & references** | `popcraft_media_upload`<br>`popcraft_media_import_url`<br>`popcraft_media_upload_widget`<br>`popcraft_media_upload_inline`<br>`popcraft_media_confirm`<br>`popcraft_show_medias`<br>`popcraft_show_elements` | Signed direct upload — shell recipes, so a 200 MB reference streams from disk, not through the context window<br>Any public URL → reference<br>Interactive file picker<br>Small files without a shell<br>Verify an upload landed<br>Your media library<br>Reusable characters and styles |
+| **Jobs & catalog** | `popcraft_models_explore`<br>`popcraft_job_display`<br>`popcraft_show_generations`<br>`popcraft_projects` | Capabilities, reference limits, aspect ratios, durations and credit costs per model<br>Result cards that refresh themselves — no polling loops<br>Revisit and chain past results<br>File results into projects |
+| **Skills** | `popcraft_get_workflow_instructions`<br>`popcraft_get_workflow_bundle_file` | Production playbooks served live from the server — see below<br>Per-step reference modules |
+| **Account** | `popcraft_balance`<br>`popcraft_show_plans_and_credits`<br>`popcraft_transactions` | Credits and plan before spending<br>Plans and one-click top-up<br>Every charge and refund |
 
 ### Skills, served live
 
@@ -85,12 +85,12 @@ Ask for a *deliverable* rather than an asset and the agent loads the matching pr
 
 | Skill | What it produces | Pipeline |
 |---|---|---|
-| `ugc-ad` | One vertical 9:16 creator-style ad, up to 15 s, speech and sound rendered natively in the clip | product intake → creator identity → script → 4-panel storyboard → realism pass → cost preview → one Seedance 2.0 clip → frozen-frame QA |
-| `thumbnail-pro` | Click-optimised YouTube / Instagram thumbnails with an identity lock for your own face | 16 concept frameworks → one intake question → 11-block house prompt → parallel variants → micro-edits → optional 4K upscale |
-| `h3-product-ad` | Minimalist, typography-led product ad on Hailuo 3, 5–15 s, native score | intake → copy → three anchor photos → beat storyboard → cost preview → one generation → QA |
+| `ugc-ad` | One vertical 9:16 creator-style ad, up to 15 s, speech and sound rendered natively in the clip | intake → creator identity → script → storyboard → realism pass → cost preview → one Seedance 2.0 clip → QA |
+| `thumbnail-pro` | Click-optimised YouTube / Instagram thumbnails with an identity lock for your own face | 16 concept frameworks → one intake question → 11-block prompt → parallel variants → micro-edits → 4K upscale |
+| `h3-product-ad` | Minimalist, typography-led product ad on Hailuo 3, 5–15 s, native score | intake → copy → three anchor photos → storyboard → cost preview → one generation → QA |
 | `voiceover` | Narration that does not sound like TTS — voice lock, words-per-second budget, per-line direction | script rewrite → voice pick → line-by-line delivery tags |
-| `sd25-prompting` / `sd25-prompting-zh` | ByteDance's official Seedance 2.5 prompt optimizer, served verbatim | compiles your brief and references into one submission-ready prompt |
-| `gpt-image-25-prompting` · `h3-prompting` | Model-specific prompt formats for GPT Image 2.5 and Hailuo 3 | change-vs-preserve structure · H3's structured format with sound and speech fields |
+| `sd25-prompting`<br>`sd25-prompting-zh` | ByteDance's official Seedance 2.5 prompt optimizer, served verbatim (English and Chinese editions) | compiles your brief and references into one submission-ready prompt |
+| `gpt-image-25-prompting`<br>`h3-prompting` | Model-specific prompt formats for GPT Image 2.5 and Hailuo 3 | change-vs-preserve structure; H3's structured format with sound and speech fields |
 
 ---
 
@@ -98,22 +98,15 @@ Ask for a *deliverable* rather than an asset and the agent loads the matching pr
 
 Every generate tool accepts `get_cost: true` and returns the exact credit price without submitting anything. Rates come from `popcraft_models_explore`; the numbers below are as of 2026-09-25 and apply before plan discounts.
 
-| Video — per second at 720p | Credits |
-|---|---:|
-| Seedance 2.0 Mini | 14 |
-| Seedance 2.0 Fast | 20 |
-| Seedance 2.0 | 26 |
-| Seedance 2.5 (480p draft) | 42 (24) |
-| Veo 3.1 Fast / Veo 3.1 | 15 / 58 |
-| Kling 3.0 Omni | 16 |
-| Wan 3.0 · Hailuo 3 | 20 |
-
-| Image — per image | Credits |
-|---|---:|
-| Seedream 4.0 | 5 |
-| GPT Image 2.5 Fast / GPT Image 2.5 | 10 / 11 |
-| Nano Banana 2 | 15 |
-| Nano Banana Pro (4K) | 20 (35) |
+| Video model | Credits / second (720p) | Image model | Credits / image |
+|---|---:|---|---:|
+| Seedance 2.0 Mini | 14 | Seedream 4.0 | 5 |
+| Seedance 2.0 Fast | 20 | GPT Image 2.5 Fast | 10 |
+| Seedance 2.0 | 26 | GPT Image 2.5 | 11 |
+| Seedance 2.5 · 480p draft | 42 · 24 | Nano Banana 2 | 15 |
+| Veo 3.1 Fast · Veo 3.1 | 15 · 58 | Nano Banana Pro · 4K | 20 · 35 |
+| Kling 3.0 Omni | 16 | | |
+| Wan 3.0 · Hailuo 3 | 20 | | |
 
 Pro and Max include a daily Seedance 2.0 Fast & Mini allowance at no credit cost, and Nano Banana / Seedream images are unlimited from Plus upward — see [unlimited-ai-video](https://popcraft.ai/unlimited-ai-video) and [pricing](https://popcraft.ai/pricing).
 
