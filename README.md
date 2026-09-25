@@ -83,14 +83,12 @@ Paste any of these into a fresh chat once the connector is on:
 
 Ask for a *deliverable* rather than an asset and the agent loads the matching production recipe before it generates anything. Nothing to install, nothing to paste.
 
-| Skill | What it produces |
-|---|---|
-| `ugc-ad` | One vertical 9:16 creator-style ad, up to 15 s, with speech and sound rendered natively in the clip.<br><sub>intake → creator identity → script → storyboard → realism pass → cost preview → one Seedance 2.0 clip → QA</sub> |
-| `thumbnail-pro` | Click-optimised YouTube / Instagram thumbnails with an identity lock for your own face.<br><sub>16 concept frameworks → one intake question → 11-block prompt → parallel variants → micro-edits → 4K upscale</sub> |
-| `h3-product-ad` | Minimalist, typography-led product ad on Hailuo 3, 5–15 s, with a native score.<br><sub>intake → copy → three anchor photos → storyboard → cost preview → one generation → QA</sub> |
-| `voiceover` | Narration that does not sound like TTS — voice lock, words-per-second budget, per-line direction.<br><sub>script rewrite → voice pick → line-by-line delivery tags</sub> |
-| `sd25-prompting`<br>`sd25-prompting-zh` | ByteDance's official Seedance 2.5 prompt optimizer, served verbatim (English and Chinese editions) — compiles your brief and references into one submission-ready prompt. |
-| `gpt-image-25-prompting`<br>`h3-prompting` | Model-specific prompt formats for GPT Image 2.5 (change-vs-preserve structure) and Hailuo 3 (structured format with sound and speech fields). |
+- **`ugc-ad`** — one vertical 9:16 creator-style ad, up to 15 s, with speech and sound rendered natively in the clip.<br><sub>intake → creator identity → script → storyboard → realism pass → cost preview → one Seedance 2.0 clip → QA</sub>
+- **`thumbnail-pro`** — click-optimised YouTube / Instagram thumbnails with an identity lock for your own face.<br><sub>16 concept frameworks → one intake question → 11-block prompt → parallel variants → micro-edits → 4K upscale</sub>
+- **`h3-product-ad`** — minimalist, typography-led product ad on Hailuo 3, 5–15 s, with a native score.<br><sub>intake → copy → three anchor photos → storyboard → cost preview → one generation → QA</sub>
+- **`voiceover`** — narration that does not sound like TTS: voice lock, words-per-second budget, per-line direction.<br><sub>script rewrite → voice pick → line-by-line delivery tags</sub>
+- **`sd25-prompting`** / **`sd25-prompting-zh`** — ByteDance's official Seedance 2.5 prompt optimizer, served verbatim (English and Chinese editions); compiles your brief and references into one submission-ready prompt.
+- **`gpt-image-25-prompting`** / **`h3-prompting`** — model-specific prompt formats for GPT Image 2.5 (change-vs-preserve structure) and Hailuo 3 (structured format with sound and speech fields).
 
 ---
 
