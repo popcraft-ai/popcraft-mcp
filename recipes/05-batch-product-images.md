@@ -1,10 +1,21 @@
 # Recipe 05 — Batch product images: N products × K scenes in one loop
 
-Goal: a catalogue's worth of consistent scene images from packshots, run by an agent with a shell (Claude Code, Codex, Cursor) so uploads stream from disk and results land in a folder. Recipe 04 is one product through this pipeline; this recipe is the loop.
+A catalogue's worth of consistent scene images from packshots, run by an agent with a shell (Claude Code, Codex, Cursor) so uploads stream from disk and results land in a folder. [Recipe 04](04-product-image-set.md) is one product through this pipeline; this recipe is the loop.
+
+<table>
+  <tr>
+    <td align="center"><img src="https://cdn.popcraft.ai/mcp-uploads/69981e960cde3209e9fb0e37/f8dba7f7-cff0-4437-8203-3b0c0387870b/recipe04-packshot.jpg" width="200" alt="Packshot"><br><sub>input · packshot</sub></td>
+    <td align="center"><img src="https://cdn.popcraft.ai/mcp-uploads/69981e960cde3209e9fb0e37/cb7eb4e6-eaf6-4c6e-bcc4-d2e8e48b8862/recipe04-cafe.jpg" width="200" alt="Scene: café"><br><sub>scene · cafe</sub></td>
+    <td align="center"><img src="https://cdn.popcraft.ai/mcp-uploads/69981e960cde3209e9fb0e37/8d039326-88a0-4f43-b22c-fa73fa5bec24/recipe04-marble.jpg" width="200" alt="Scene: marble"><br><sub>scene · marble</sub></td>
+    <td align="center"><img src="https://cdn.popcraft.ai/mcp-uploads/69981e960cde3209e9fb0e37/c28f576f-2af9-40c9-b7bd-492bb77f84f4/recipe04-poster.jpg" width="200" alt="Scene: poster"><br><sub>scene · poster</sub></td>
+  </tr>
+</table>
+
+<sub>One SKU through three scenes — the same packshot attached to every call, the prompt changing only the scene.</sub>
 
 ## Inputs
 
-- `products/<sku>.png` — one packshot per product on white (make them with GPT Image 2.5 if you only have photos with clutter: see recipe 04, step 1).
+- `products/<sku>.png` — one packshot per product on white (make them with GPT Image 2.5 if you only have cluttered photos: recipe 04, step 1).
 - `brand/wordmark.png` — attached wherever the wordmark must render.
 - A scene list, e.g. `scenes.json`:
 
@@ -18,16 +29,22 @@ Goal: a catalogue's worth of consistent scene images from packshots, run by an a
 
 ## The loop (what the agent runs)
 
-1. Upload each packshot once: `popcraft_media_upload { filename }` → run the returned `curl -T` recipe → keep the media URL per SKU. (Public URLs: `popcraft_media_import_url` instead.)
-2. Pre-check the model once: `popcraft_models_explore { action: "get", model_id: "nano-banana-pro" }` — reference limit, aspect ratios, resolutions.
-3. Preview the bill: `popcraft_generate_image { model: "nano-banana-pro", get_cost: true, ... }` for one call, multiply by N × K, show the number, get a yes.
-4. For each product × scene:
+1. **Upload each packshot once** — `popcraft_media_upload { filename }` → run the returned `curl -T` recipe → keep the media URL per SKU. (Public URLs: `popcraft_media_import_url` instead.)
+2. **Pre-check the model once** — `popcraft_models_explore { action: "get", model_id: "nano-banana-pro" }` — reference limit, aspect ratios, resolutions.
+3. **Preview the bill** — `popcraft_generate_image { model: "nano-banana-pro", get_cost: true, ... }` for one call, multiply by N × K, show the number, get a yes.
+4. **For each product × scene**:
 
-   `popcraft_generate_image { model: "nano-banana-pro", aspect_ratio: <scene.ar>, resolution: "2K", medias: [{ role: "reference", value: <packshot url> }], project_name: "Catalogue Q4" }`
+   ```
+   popcraft_generate_image {
+     model: "nano-banana-pro", aspect_ratio: <scene.ar>, resolution: "2K",
+     medias: [{ role: "reference", value: <packshot url> }],
+     project_name: "Catalogue Q4"
+   }
+   ```
 
    > Place the attached product <scene.prompt>. Keep the product's shape, finish, colour and the printed wordmark exactly as in the reference — same letterforms, same size and position. No other text, no extra props touching the product.
 
-5. Collect result URLs from each job card (or `popcraft_show_generations` afterwards), download with `curl -o out/<sku>_<scene>.png <url>`, and write a manifest row: sku, scene, model, credits, url, prompt.
+5. **Collect** result URLs from each job card (or `popcraft_show_generations` afterwards), download with `curl -o out/<sku>_<scene>.png <url>`, and write a manifest row: sku, scene, model, credits, url, prompt.
 
 Concurrency: the plan's concurrent-job limit applies (Pro 8, Max 10) — submit in batches of that size rather than one at a time.
 
@@ -37,12 +54,8 @@ Concurrency: the plan's concurrent-job limit applies (Pro 8, Max 10) — submit 
 - **Separate change from preserve** in every prompt — the sentence starting "Keep …" is not optional.
 - **One model for the whole batch.** Mixing image models mid-batch changes the rendering of the same product.
 - **Fixed camera language per scene** ("three-quarter view, eye level, 50mm look") so a scene reads the same across SKUs.
-- **QA the wordmark at 100%** on a 5% sample before downloading the rest; regenerate only the misses (a re-roll with the same reference costs one image).
+- **QA the wordmark at 100%** on a 5% sample before downloading the rest; regenerate only the misses — a re-roll with the same reference costs one image.
 
 ## Cost math
 
-Nano Banana Pro at 2K: 20 credits/image on Free and Starter; **unlimited on Plus, Pro and Max**. 50 SKUs × 3 scenes = 150 images = 3,000 credits at list, or 0 credits of your allowance on Plus+. GPT Image 2.5 (11 credits at 1K) when exact text must render inside the scene; Nano Banana 2 (15) or Seedream 4.0 (5) for drafts you will not ship.
-
-## Worked example (one SKU, real outputs)
-
-Packshot → café → marble → poster → 5-second product loop: https://cdn.popcraft.ai/imagegen/9e3f56a3-ee2f-44c7-b3e3-a979db9cf5a0/product-packshot-for-a-catalog.png · https://cdn.popcraft.ai/imagegen/584c491d-7332-434c-b4dc-6212b4422dcf/place-the-attached-matte-black-water.png · https://cdn.popcraft.ai/imagegen/122a38bd-9d66-4f84-871c-e65499452658/keep-the-attached-product-exactly.png · https://cdn.popcraft.ai/imagegen/13ec8762-97a5-4add-a4aa-c784ce133f14/campaign-poster-portrait-format-hero.png · https://cdn.popcraft.ai/videogen/84c23f8a-930d-4ba0-8154-74784ef89d5b/image-1-is-the-product.mp4 — prompts and credits in [recipe 04](04-product-image-set.md).
+Nano Banana Pro at 2K is **unlimited on Plus, Pro and Max** — a 50-SKU × 3-scene batch costs nothing beyond the plan. On Free and Starter it is 20 credits an image. Use GPT Image 2.5 (11 credits at 1K) when exact text must render inside the scene; Nano Banana 2 (15) or Seedream 4.0 (5) for drafts you will not ship.
