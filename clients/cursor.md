@@ -2,7 +2,8 @@
 
 One click from the browser, or a config file — your call.
 
-**One-click** — the "Add to Cursor" button on https://popcraft.ai/mcp opens Cursor with Popcraft pre-filled; confirm and you are done.
+**One-click** — the "Add to Cursor" button on https://popcraft.ai/mcp opens Cursor with Popcraft pre-filled; confirm and you are done. The same install link works from anywhere:
+`cursor://anysphere.cursor-deeplink/mcp/install?name=popcraft&config=eyJ1cmwiOiJodHRwczovL3BvcGNyYWZ0LmFpL2FwaS9tY3AifQ==`
 
 **Or add the config** — put this in `~/.cursor/mcp.json` (global) or `.cursor/mcp.json` in a project:
 
